@@ -1,5 +1,5 @@
 {
-  "name": "Workout Access API",
+  "name": "workout-access",
   "version": "1.0.0",
   "description": "This is the backend repository for the Workout Access API. Typescript | Express | Mongoose | Swagger | OAuth 0 | Render.",
   "main": "src/server.ts",
@@ -9,8 +9,7 @@
     "start": "nodemon --exec ts-node src/server.ts",
     "swagger": "ts-node scripts/swagger.ts",
     "seed": "ts-node scripts/seed.ts",
-    "lint": "eslint --ignore-path .eslintignore --ext .js,.ts .",
-    "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\""
+    "lint": "eslint --ignore-path .eslintignore --ext .js,.ts ."
   },
   "repository": {
     "type": "git",
