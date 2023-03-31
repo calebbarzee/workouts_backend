@@ -26,7 +26,7 @@ app.use("/", router);
 // Database
 mongoose.set("strictQuery", true); // Suppress warning
 mongoose
-  .connect(process.env.MONGODB_URI!)
+  .connect(process.env.MONGODB_URI)
   .then(() => {
     console.log("|***********************************|");
     console.log("| Successfully connected to DB!");

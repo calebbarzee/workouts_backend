@@ -32,3 +32,32 @@ export async function deleteUser(userId: Types.ObjectId) {
   await UserModel.findByIdAndRemove(userId);
   return;
 }
+
+
+// export async function addWorkoutToUser(userId: Types.ObjectId, workoutId: Types.ObjectId): Promise<HydratedDocument<IWorkout>[]>{
+//   // Get the User
+//   const user = await UserModel.findById(userId);
+//   if (!user) throw new Error("User ID not found");
+
+//   // Check for the workout existence
+//   const workout = await WorkoutModel.findById(workoutId);
+//   if (!workout) throw new Error("Workout ID not found");
+
+//   user.workouts.push(workout);
+//   const result = await user.save();
+//   return result.workouts as HydratedDocument<IWorkout>[];
+// }
+
+// export async function removeWorkoutFromUser(userId: Types.ObjectId, workoutId): Promise<HydratedDocument<IWorkout>[]> {
+//   // Get the User
+//   const user = await UserModel.findById(userId);
+//   if (!user) throw new Error("User ID not found");
+//   // Search the user's workouts for the workoutId
+//   const workout = user.workouts.findIndex((workout) => workout === workoutId);
+//   if (!workout) throw new Error("Workout ID not found");
+//   // Remove the workout from the user's workouts
+//   user.workouts.splice(workout, 1);
+//   // Save the user
+//   const result = await user.save();
+//   return result.workouts as HydratedDocument<IWorkout>[];
+// }

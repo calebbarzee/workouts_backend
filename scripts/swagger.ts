@@ -32,7 +32,6 @@ const doc = {
       email: "string",
       firstName: "string",
       lastName: "string",
-      userLevel: 1 | 2,
       tokenData: {},
       workouts: []
     },
@@ -49,11 +48,11 @@ const doc = {
     },
 
     workout: {
-      name: "string",
-      description: "string",
-      imageURL: "string",
-      categories: "string",
-      muscleGroup: "string"
+      name: "Bench Press",
+      description: "A chest exercise involving pressing of a barbell from a supine position.",
+      imageURL: "https://plus.unsplash.com/premium_photo-1672280783573-e0e0ca8fed20?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1043&q=80",
+      categories: "Weight Lifting",
+      muscleGroup: "Chest"
     },
   },
 

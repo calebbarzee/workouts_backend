@@ -22,31 +22,3 @@ export async function updateWorkout(workoutId: Types.ObjectId, workout: IWorkout
 export async function deleteWorkout(workoutId: Types.ObjectId) {
   return await WorkoutModel.deleteOne({ $_id: workoutId });
 }
-
-export async function addWorkoutToUser(userId: Types.ObjectId, workoutId: Types.ObjectId): Promise<HydratedDocument<IWorkout>[]>{
-  // Get the User
-  const user = await UserModel.findById(userId);
-  if (!user) throw new Error("User ID not found");
-
-  // Check for the workout existence
-  const workout = await WorkoutModel.findById(workoutId);
-  if (!workout) throw new Error("Workout ID not found");
-
-  user.workouts.push(workout);
-  const result = await user.save();
-  return result.workouts as HydratedDocument<IWorkout>[];
-}
-
-export async function removeWorkoutFromUser(userId: Types.ObjectId, workoutId: Types.ObjectId): Promise<HydratedDocument<IWorkout>[]> {
-  // Get the User
-  const user = await UserModel.findById(userId);
-  if (!user) throw new Error("User ID not found");
-  // Search the user's workouts for the workoutId
-  const workout = user.workouts.findIndex((workout) => workout._id === workoutId);
-  if (!workout) throw new Error("Workout ID not found");
-  // Remove the workout from the user's workouts
-  user.workouts.splice(workout, 1);
-  // Save the user
-  const result = await user.save();
-  return result.workouts as HydratedDocument<IWorkout>[];
-}

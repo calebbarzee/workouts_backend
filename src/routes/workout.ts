@@ -1,7 +1,7 @@
 import Router, { NextFunction, Request, Response } from "express";
 import { HydratedDocument, Types } from "mongoose";
 import { IWorkout } from "../models/workout";
-import { getWorkouts, getWorkoutById, addWorkout, updateWorkout, deleteWorkout, removeWorkoutFromUser } from "../controllers/workout";
+import { getWorkouts, getWorkoutById, addWorkout, updateWorkout, deleteWorkout } from "../controllers/workout";
 import { getUserById } from "../controllers/user";
 import { requiresAuth } from "express-openid-connect";
 
@@ -163,34 +163,6 @@ workoutRouter.put("/addWorkout/:workoutId", requiresAuth(), async (req: Request,
       });
     } else {
       res.status(404).send({ message: "Workout not added to user" });
-    }
-  } catch (error) {
-    console.log(error);
-  }
-});
-
-workoutRouter.put("/removeWorkout/:workoutId", requiresAuth(), async (req: Request, res: Response, next: NextFunction) => {
-  /* 
-    #swagger.tags = ['Workouts']
-    #swagger.summary = "Remove workout from user."
-    #swagger.operationId = 'removeWorkoutFromUser'
-    #swagger.response[200] = {
-      description: "Success",
-    }
-    #swagger.response[404] = {
-      description: "Not Found"
-    }
-  */
-  try {
-    const userId: Types.ObjectId = req.userId;
-    const workoutId: Types.ObjectId = new Types.ObjectId(req.params.workoutId);
-    const result = await removeWorkoutFromUser(userId, workoutId);
-    if (result) {
-      res.status(200).send({
-        message: `Workout with ID: ${workoutId} removed from user with ID: ${userId}`
-      });
-    } else {
-      res.status(404).send({ message: "Workout not removed from user" });
     }
   } catch (error) {
     console.log(error);

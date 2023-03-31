@@ -5,6 +5,7 @@ import { logRequestInfo } from "../middleware/log";
 import { config } from "dotenv";
 import { userRouter } from "./user";
 import { workoutRouter } from "./workout";
+import { exerciseRouter } from "./exercise";
 import swaggerUi from "swagger-ui-express";
 
 // DotEnv Config
@@ -45,3 +46,4 @@ router.get("/logout", (res: Response) => {
 
 router.use("/user", userRouter);
 router.use("/workout", workoutRouter);
+router.use("/exercise", exerciseRouter);

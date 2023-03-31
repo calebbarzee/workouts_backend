@@ -377,17 +377,87 @@
         }
       }
     },
-    "/workout/removeWorkout/{workoutId}": {
-      "put": {
+    "/exercise/": {
+      "get": {
         "tags": [
-          "Workouts"
+          "Exercises"
         ],
-        "summary": "Remove workout from user.",
+        "summary": "Gets all exercises.",
         "description": "",
-        "operationId": "removeWorkoutFromUser",
+        "operationId": "getAllExercises",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Exercises"
+        ],
+        "summary": "Add exercise to the store.",
+        "description": "",
+        "operationId": "addExercise",
         "parameters": [
           {
-            "name": "workoutId",
+            "name": "exercise",
+            "in": "body",
+            "description": "Exercise interface",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/exercise"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/exercise/{exerciseId}": {
+      "get": {
+        "tags": [
+          "Exercises"
+        ],
+        "summary": "Gets exercise by ID.",
+        "description": "",
+        "operationId": "getExerciseById",
+        "parameters": [
+          {
+            "name": "exerciseId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Exercises"
+        ],
+        "summary": "Update exercise by ID.",
+        "description": "",
+        "operationId": "updateExercise",
+        "parameters": [
+          {
+            "name": "exerciseId",
             "in": "path",
             "required": true,
             "type": "string"
@@ -419,10 +489,6 @@
         "lastName": {
           "type": "string",
           "example": "string"
-        },
-        "userLevel": {
-          "type": "number",
-          "example": 3
         },
         "tokenData": {
           "type": "object",
@@ -478,23 +544,23 @@
       "properties": {
         "name": {
           "type": "string",
-          "example": "string"
+          "example": "Bench Press"
         },
         "description": {
           "type": "string",
-          "example": "string"
+          "example": "A chest exercise involving pressing of a barbell from a supine position."
         },
         "imageURL": {
           "type": "string",
-          "example": "string"
+          "example": "https://plus.unsplash.com/premium_photo-1672280783573-e0e0ca8fed20?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1043&q=80"
         },
         "categories": {
           "type": "string",
-          "example": "string"
+          "example": "Weight Lifting"
         },
         "muscleGroup": {
           "type": "string",
-          "example": "string"
+          "example": "Chest"
         }
       }
     }

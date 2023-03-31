@@ -1,20 +1,14 @@
-import { model, Schema, Types } from "mongoose";
+import { model, Schema } from "mongoose";
+import { ExerciseModel, IExercise } from "./exercise";
 
 export type IWorkout = {
-  _id?: string | Types.ObjectId;
-  name: "string",
-  description: "string",
-  imageURL?: "string",
-  categories: "string",
-  muscleGroup: "string"
+  name: string;
+  exercises: IExercise[];
 };
 
 export const WorkoutSchema = new Schema<IWorkout>({
   name: { type: String, required: true },
-  description: { type: String, required: true },
-  imageURL: { type: String, required: false },
-  categories: { type: String, required: true },
-  muscleGroup: { type: String, required: true }
+  exercises: [ExerciseModel.schema]
 });
 
 export const WorkoutModel = model("workout", WorkoutSchema);
